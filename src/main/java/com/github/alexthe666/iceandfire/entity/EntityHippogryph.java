@@ -5,10 +5,7 @@ import com.github.alexthe666.citadel.animation.AnimationHandler;
 import com.github.alexthe666.citadel.animation.IAnimatedEntity;
 import com.github.alexthe666.iceandfire.IafConfig;
 import com.github.alexthe666.iceandfire.IceAndFire;
-import com.github.alexthe666.iceandfire.entity.ai.HippogryphAIMate;
-import com.github.alexthe666.iceandfire.entity.ai.HippogryphAITarget;
-import com.github.alexthe666.iceandfire.entity.ai.HippogryphAITargetItems;
-import com.github.alexthe666.iceandfire.entity.ai.HippogryphAIWander;
+import com.github.alexthe666.iceandfire.entity.ai.*;
 import com.github.alexthe666.iceandfire.entity.util.*;
 import com.github.alexthe666.iceandfire.enums.EnumHippogryphTypes;
 import com.github.alexthe666.iceandfire.inventory.ContainerHippogryph;
@@ -172,7 +169,7 @@ public class EntityHippogryph extends TamableAnimal implements ISyncMount, IAnim
 
     @Override
     protected void registerGoals() {
-//        this.goalSelector.addGoal(0, new DragonAIRide(this));
+        this.goalSelector.addGoal(0, new DragonAIRide(this));
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2D, true));
@@ -769,7 +766,7 @@ public class EntityHippogryph extends TamableAnimal implements ISyncMount, IAnim
                 // Approx value for speed tweak
                 // Maybe should be put into config
                 float walkSpeedFactor = 0.80f;
-                float flightSpeedFactor = 0.35F;
+                float flightSpeedFactor = 3.0F;
                 LivingEntity rider = (LivingEntity)this.getControllingPassenger();
 
                 // Mouse controlled yaw
